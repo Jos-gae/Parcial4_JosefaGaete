@@ -1,0 +1,14 @@
+def menu(opcion):
+    print("""
+          MENU PRINCIPAL
+        1.- Comprar entrada.
+        2.- Consultar comprador.
+        3.- Cancelar compra.
+        4.- Salir.\n
+          """)
+    try:
+      opcion=int(input("Ingrese opción: "))
+    except:
+      print("Ingrese una opción valida")
+
+    return opcion
