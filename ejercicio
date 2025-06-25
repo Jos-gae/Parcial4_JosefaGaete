@@ -1,0 +1,36 @@
+import MisFunciones as fc
+
+op=0
+diccionario={}
+
+while op!=4:
+    op=fc.menu(op)
+
+    if op==4:
+        print("Programa terminado...")
+
+    elif op==1:
+        print("Opción seleccionada: Comprar entrada\n")
+        
+        diccionario=fc.comprar(diccionario)
+        print("Compra realizada correctamente!\n")
+
+    elif op==2:
+        print("Opción seleccionada: Consultar comprador\n")
+        busqueda=input("Ingrese el nombre que desea buscar: ")
+
+        if busqueda in diccionario:
+            print("Tipo de entrada:", diccionario[busqueda])
+        else:
+            print("El buscador no se encuentra.")
+
+    elif op==3:
+        print("Opción seleccionada: Cancelar compra\n")
+        cancelar=input("Ingrese nombre de comprador a cancelar: ")
+
+        if cancelar in diccionario:
+            diccionario.pop(cancelar)
+            print("¡Compra cancelada!\n")
+
+    else:
+        print("Debe ingresar una opción valida!!!")
