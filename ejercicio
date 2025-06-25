@@ -1,3 +1,65 @@
+def menu(opcion):
+    print("""
+          MENU PRINCIPAL
+        1.- Comprar entrada.
+        2.- Consultar comprador.
+        3.- Cancelar compra.
+        4.- Salir.\n
+          """)
+    try:
+      opcion=int(input("Ingrese opción: "))
+    except:
+      print("Ingrese una opción valida")
+
+    return opcion
+
+def comprar(dicci):
+
+#Ingreso de nombre
+  while True:  
+    nombre=input("Ingrese su nombre: ")
+
+    if nombre in dicci:
+      print("El nombre ya está ingresado, pruebe otra vez")
+      continue
+    else:
+       break
+    
+#Tipo de entrada
+  while True:
+    tipo=input("Seleccione su tipo de entrada. (G) para general o (V) para VIP: ")
+    
+    if tipo=="G" or tipo=="g":
+      tipo="G"
+      break
+    elif tipo=="V" or tipo=="v":
+      tipo="V"
+      break
+    else:
+      print("Ingreso incorrecto. Ingrese (V) o (G)")
+
+#Código de verificación
+  while True:
+    codigo=input("Ingrese su código de confirmación: ")
+
+    #largo código
+    if len(codigo)<6:
+      print("El código de confirmación debe tener un largo mínimo de 6 carácteres")
+    #Verificar que no tenga espacios
+    elif codigo.count(" ")!=0:
+      print("El código no puede tener espacios")
+    #Verificar que tenga número
+    elif (any(c.isdigit()) for c in codigo)==False:
+      print("El código debe tener al menos 1 número")
+    #Verificar que tenga mayúscula
+    elif (any(c.isupper() for c in codigo))==False:
+      print("El código debe tener por lo menos 1 mayúscula")
+    else:
+      break
+    
+  dicci[nombre]=[tipo,codigo]
+  return dicci
+
 import MisFunciones as fc
 
 op=0
